@@ -357,16 +357,16 @@ button,
 /* Кастомный чекбокс */
 
 .search-form__pseudo-checkbox {
-  /* Ширина (по макету) 19px */
+  /* Ширина (по макету) 19px (по 1 пикселю на отступ и границу) */
   width: 17px;
-  /* Высота (по макету) 19px */
+  /* Высота (по макету) 19px (по 1 пикселю на отступ и границу) */
   height: 17px;
   /* Убераем картинку */
   background-image: none;
-  /* Устанавливаем границу (по макету) белую, в 1 px) */
+  /* Отступ к границе в 1 px */
   outline-offset: 1px;
+  /* Устанавливаем границу (по макету) белую, в 1 px) */
   outline: 1px solid #fff;
-  box-sizing: content-box;
 }
 
 /* Общие для кнопок */
@@ -447,7 +447,7 @@ button,
 
 /* Наведение мышкой на родителя кастомного чекбокса */
 
-.search-form__label:hover .search-form__pseudo-checkbox {
+.search-form__label:hover .search-form__label-text {
   /* Подчеркнуть текст */
   text-decoration: underline;
 }
