@@ -55,7 +55,7 @@ ol {
   /* Контент страницы - сетка */
   display: grid;
   /* Выравниваем сетку по центру (по вертикали и по горизонтали) */
-  place-content: center;
+  place-content: center start;
   /* Выравниваем содержимое сетки (по вертикали - в низ, по горизонтали - в начало) */
   place-items: end start;
   /* Создаем 2 столбца с автоматическим размером по горизонтали */
@@ -70,7 +70,7 @@ ol {
 
 .content__details {
   /* Ширина блока (по макету) 399px */
-  min-width: 399px;
+  min-width: 419px;
   /* Контент блока - сетка */
   display: grid;
   /* 2 строки в сетке с автоматическим размером */
@@ -226,9 +226,9 @@ ol {
 
 .result__video-container {
   /* Ширина (по макету) 711px */
-  width: 711px;
+  inline-size: 711px;
   /* Высота (по макету) 386px */
-  height: 386px;
+  block-size: 386px;
   /* Относительное позиционирование для прелоадеров */
   position: relative;
 }
@@ -322,8 +322,8 @@ button,
   border-bottom: 1px solid #fff;
   /* Прозрачный цвет фона */
   background-color: transparent;
-  /* Цвет текста (по макету) - прозрачно-белый */
-  color: rgba(255 255 255 / 0.7);
+  /* Цвет текста - белый */
+  color: inherit;
   /* Пробрасываем семейство шрифта от родителя (по макету) "Fira Sans Condensed" */
   font-family: inherit;
   /* Пробрасываем размер шрифта от родителя (по макету) 18px */
@@ -334,6 +334,13 @@ button,
   font-weight: 400;
   /* Размер строки (по макету) - нормальная */
   line-height: normal;
+}
+
+/* Текстовое поле ввода - плейсхолдер */ 
+
+.search-form__textfield::placeholder {
+  /* Цвет текста (по макету) - серый */
+  color: rgba(255 255 255 / 0.7);
 }
 
 /* Список чекбоксов */
@@ -351,13 +358,15 @@ button,
 
 .search-form__pseudo-checkbox {
   /* Ширина (по макету) 19px */
-  width: 19px;
+  width: 17px;
   /* Высота (по макету) 19px */
-  height: 19px;
+  height: 17px;
   /* Убераем картинку */
   background-image: none;
   /* Устанавливаем границу (по макету) белую, в 1 px) */
-  border: 1px solid #fff;
+  outline-offset: 1px;
+  outline: 1px solid #fff;
+  box-sizing: content-box;
 }
 
 /* Общие для кнопок */
@@ -433,19 +442,12 @@ button,
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox,
 .search-form__checkbox:active + .search-form__pseudo-checkbox {
-  /* Картинка с заливкой белым */
-  background-image: url(../images/group.svg);
-  /* Картинки не повторяются */
-  background-repeat: no-repeat;
-  /* Поместить картинку на всю площадь */
-  background-size: cover;
-  /* Отцентрировать картинку */
-  background-position: center;
+  background-color: #fff;
 }
 
 /* Наведение мышкой на родителя кастомного чекбокса */
 
-.search-form__label:hover:has(.search-form__pseudo-checkbox) {
+.search-form__label:hover .search-form__pseudo-checkbox {
   /* Подчеркнуть текст */
   text-decoration: underline;
 }
