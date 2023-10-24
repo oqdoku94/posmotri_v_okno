@@ -16,6 +16,8 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex;
+  justify-content: center;
 }
 
 h1,
@@ -35,4 +37,481 @@ fieldset {
 ul,
 ol {
   list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Основной блок содержимого страницы */
+
+.content {
+  /* Контент страницы - сетка */
+  display: grid;
+  /* Выравниваем сетку по центру (по вертикали и по горизонтали) */
+  place-content: center;
+  /* Выравниваем содержимое сетки (по вертикали - в низ, по горизонтали - в начало) */
+  place-items: end start;
+  /* Создаем 2 столбца с автоматическим размером по горизонтали */
+  grid-template-columns: auto auto;
+  /* Ширина (по макету) - 1140px */
+  max-width: 1140px;
+  /* Отступ (по макету) - 30px */
+  column-gap: 30px;
+}
+
+/* Правая часть главного контейнера с заголовком и списоком городов */
+
+.content__details {
+  /* Ширина блока (по макету) 399px */
+  min-width: 399px;
+  /* Контент блока - сетка */
+  display: grid;
+  /* 2 строки в сетке с автоматическим размером */
+  grid-template-rows: auto auto;
+  /* Отступ между заголовком и списком городов (по макету) 26px */
+  row-gap: 26px;
+}
+
+/* Заголовок страницы - справа */
+
+.title {
+  /* Семейство шрифтов (по макету) Oswald */
+  font-family: Oswald, sans-serif;
+  /* Размер шрифта (по макету) 75px */
+  font-size: 75px;
+  /* Стиль шрифта (по макету) нормальный */
+  font-style: normal;
+  /* Жирность шрифта (по макету) жирный */
+  font-weight: 700;
+  /* Высота строки (по макету) 94% */
+  line-height: 94%;
+  /* Трансформация текста (по макету) заглавные буквы */
+  text-transform: uppercase;
+}
+
+/* Заголовок страницы - справа (первые 3 символа "ПО-") */
+
+.content__accent {
+  /* Цвет текста (по макету) - #545050 */
+  color: #545050;
+}
+
+/* Блок списка городов */
+
+.content__list {
+  /* Размер блока по вертикали (по макету) 298 px */
+  min-height: 298px;
+  /* Размер блока по вертикали (по макету) 298 px */
+  max-height: 298px;
+  /* При переполнении - скролл */
+  overflow: auto;
+  /* Относительное позиционирование для прелоадеров */
+  position: relative;
+}
+
+/* Элемент списка городов, кроме последнего */
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+/* Ссылка на город элемента городов */
+
+.content__card-link {
+  /* Цвет текста (по макету) #fff */
+  color: inherit;
+  /* Декорация текста (по макету) без подчеркивания */
+  text-decoration: none;
+  /* Отображаем блочным элементом, для применения фона */
+  display: block;
+  /* Внешний отступ (по макету) 2px */
+  margin: 2px;
+}
+
+/* Контейнер элемента с информацией о городе и фотографией  */
+
+.content__video-card {
+  /* Контент блока - сетка */
+  display: grid;
+  /* 2 столбца в сетке с автоматическим размером (информация о городе и фотка) */
+  grid-template-columns: auto auto;
+  /* Выравниваем сетку (по вертикали - в начало и по горизонтали - расставить в начало и конец по ширине) */
+  place-content: start space-between;
+  /* Внутренний отступ (по макету) 2px */
+  padding: 2px;
+}
+
+/* Контейнер с заголовком и описанием каждого элемента в списке */
+
+.content__video-card-description-container {
+  /* Контент блока - флекс */
+  display: flex;
+  /* Элементы распологаем в колонку и отключаем перенос */
+  flex-flow: column nowrap;
+  /* Выходящее за пределы - скрываем */
+  overflow: hidden;
+  /* Отступ между заголовком и описанием (по макету) 6px */
+  row-gap: 6px;
+}
+
+/* Заголовок элемента города в списке */
+
+.content__video-card-title {
+  /* Семейство шрифтов (по макету) Oswald */
+  font-family: Oswald, sans-serif;
+  /* Размер шрифта (по макету) 30px */
+  font-size: 30px;
+  /* Стиль текста (по макету) нормальный */
+  font-style: normal;
+  /* Жирность текста (по макету) жирный */
+  font-weight: 700;
+  /* Высота строки (по макету) 100% (30px), но без 8px неполностью влезают буквы такие 
+  как "й" и не видно подчеркивание при наведении  */
+  line-height: 38px;
+  /* Трансформация текста (по макету) заглавные буквы */
+  text-transform: uppercase;
+  /* Отключаем перенос текста на следующую строку */
+  white-space: nowrap;
+  /* Добавляем многоточие */
+  text-overflow: ellipsis;
+  /* Скрываем контент, который не помещается*/
+  overflow: hidden;
+}
+
+/* Описание элемента города в списке */
+
+.content__video-card-description {
+  /* Размер шрифта (по макету) 18px */
+  font-size: 18px;
+  /* Стиль текста (по макету) нормальный */
+  font-style: normal;
+  /* Жирность текста (по макету) нормальный */
+  font-weight: 400;
+  /* Высота строки (по макету) 90% */
+  line-height: 16.2px; /* 90% */
+}
+
+/* Фотография города (img) */
+
+.content__video-card-thumbnail {
+  /* Ширина (по макету) - 194px */
+  width: 194px;
+  /* Высота (по макету) - 103px */
+  height: 103px;
+  /* Помещаем содержимое картинки на весь размер с сохранением пропорций */
+  object-fit: cover;
+  /* Центрируем содержимое картинки */
+  object-position: center;
+}
+
+/* Левая часть главного контейнера с видео и формой */
+
+.result {
+  /* Контент блока - сетка */
+  display: grid;
+  /* 2 строки в сетке с автоматическим размером */
+  grid-template-rows: auto auto;
+  /* Отступ между видео и формой (по макету) 16px */
+  row-gap: 16px;
+}
+
+/* Контейнер видео */
+
+.result__video-container {
+  /* Ширина (по макету) 711px */
+  width: 711px;
+  /* Высота (по макету) 386px */
+  height: 386px;
+  /* Относительное позиционирование для прелоадеров */
+  position: relative;
+}
+
+/* Видео */
+
+.result__video {
+  /* Растягиваем контент на всю ширину родительского блока */
+  width: 100%;
+  /* Растягиваем контент на всю высоту родительского блока */
+  height: 100%;
+  /* Помещаем содержимое видео на весь размер с сохранением пропорций */
+  object-fit: cover;
+  /* Центрируем содержимое видео */
+  object-position: center;
+}
+
+/* Блок формы под видео*/
+
+.search-form {
+  /* Контент блока - флекс */
+  display: flex;
+  /* Весь внутренний контент сетки в начало блока */
+  justify-items: start;
+  /* Растаскиваем от и до на весь контейнер*/
+  justify-content: space-between;
+  /* Центрируем по вертикали */
+  align-items: center;
+}
+
+/* Заголовки блоков формы под видео */
+
+.search-form__fieldset-title {
+  /* Размер шрифта (по макету) 18px */
+  font-size: 18px;
+  /* Жирность шрифта (по макету) 400 */
+  font-weight: 400;
+  /* Отступ снизу (по макету) 5px */
+  margin-bottom: 5px;
+  /* Стиль (по макету) обычный */
+  font-style: normal;
+  /* Высота строки (по макету) обычная */
+  line-height: normal;
+}
+
+/* Рамки блоков формы */
+
+fieldset {
+  /* Убираем границу */
+  border: none;
+}
+
+/* Метка для элемента формы (стилизации) */
+
+.search-form__label {
+  /* Ширина по размеру внутренних элементов */
+  width: fit-content;
+  /* Контент блока - флекс */
+  display: flex;
+  /* расставляем элементы в линию, без переноса на следующую строку в случае если не вместился */
+  flex-flow: row nowrap;
+  /* Отступ между содержимым элемента формы */
+  column-gap: 5px;
+}
+
+/* Кликабельные элементы на странице */
+
+button,
+.search-form__label,
+.content__video-card {
+  /* Устанавливаем курсор - палец */
+  cursor: pointer;
+}
+
+/* Текстовое поле ввода для поиска города */
+
+.search-form__textfield {
+  /* ! Трюк для разных браузеров */
+  appearance: none;
+  /* Ширина (по макету) 225px */
+  min-width: 225px;
+  /* Высота (по макету) 27px */
+  min-height: 27px;
+  /* Убираем границу справа */
+  border-right: none;
+  /* Убираем границу слева */
+  border-left: none;
+  /* Добавляем границу сверху */
+  border-top: 1px solid #fff;
+  /* Добавляем границу снизу */
+  border-bottom: 1px solid #fff;
+  /* Прозрачный цвет фона */
+  background-color: transparent;
+  /* Цвет текста (по макету) - прозрачно-белый */
+  color: rgba(255 255 255 / 0.7);
+  /* Пробрасываем семейство шрифта от родителя (по макету) "Fira Sans Condensed" */
+  font-family: inherit;
+  /* Пробрасываем размер шрифта от родителя (по макету) 18px */
+  font-size: inherit;
+  /* Стиль шрифта (по макету) - обычный */
+  font-style: normal;
+  /* Жирность шрифта (по макету) - обычный */
+  font-weight: 400;
+  /* Размер строки (по макету) - нормальная */
+  line-height: normal;
+}
+
+/* Список чекбоксов */
+
+.search-form__checkbox-list {
+  /* Контент блока - grid */
+  display: grid;
+  /* 3 колонки с временем суток */
+  grid-template-columns: repeat(3, auto);
+  /* Расстояние между чекбоксами (по макету) 15px */
+  column-gap: 15px;
+}
+
+/* Кастомный чекбокс */
+
+.search-form__pseudo-checkbox {
+  /* Ширина (по макету) 19px */
+  width: 19px;
+  /* Высота (по макету) 19px */
+  height: 19px;
+  /* Убераем картинку */
+  background-image: none;
+  /* Устанавливаем границу (по макету) белую, в 1 px) */
+  border: 1px solid #fff;
+}
+
+/* Общие для кнопок */
+
+.button {
+  /* Отступ сверху */
+  padding-top: 6px;
+  /* Отступ снизу */
+  padding-bottom: 6px;
+  /* Граница (по макету) */
+  border: 1px solid #fff;
+  /* Прозрачный фон */
+  background-color: transparent;
+  /* Цвет текста (по макету) #fff */
+  color: inherit;
+  /* Семейство шрифтов (по макету) "Fira Sans Condensed" */
+  font-family: inherit;
+  /* Размер шрифта (по макету) 18px */
+  font-size: inherit;
+  /* Стиль текста (по макету) нормальный */
+  font-style: normal;
+  /* Жирность текста (по макету) жирный */
+  font-weight: 700;
+  /* Высота строки (по макету) обычная */
+  line-height: normal;
+}
+
+/* Кнопка "Найти" */
+
+.search-form__submit-button {
+  /* Ширина (по макету) 194px */
+  min-width: 194px;
+  /* Вертикальное выравнивание - внизу */
+  align-self: flex-end;
+}
+
+/* Кнопка "Показать еще" */
+
+.more-button {
+  /* 100% от родителя, при наличии скролла - ширина будет меньше
+     по этому занимаем 100% родителя */
+  max-width: 100%;
+  /* Ширина (по макету) - 399px */
+  width: 399px;
+}
+
+/* Текстовое поле при фокусе (не с клавиатуры) */
+
+.search-form__textfield:focus {
+  /* Убираем обводку */
+  outline: none;
+}
+
+/* Текстовое поле при фокусе (с клавиатуры) */
+
+.search-form__label:has(:focus-visible) {
+  /* Отступ обводки */
+  outline-offset: 1px;
+  /* Обводка */
+  outline: 1px solid #fff;
+}
+
+/* Текстовое поле при активации (нажатии кнопки мыши) */
+
+.search-form__label:has(.search-form__textfield:active) {
+  /* Убираем отступ обводки */
+  outline-offset: 0;
+  /* Обводка */
+  outline: 1px solid #fff;
+}
+
+/* Выбранный или активный (нажата кнопка мыши) чекбокс */
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox,
+.search-form__checkbox:active + .search-form__pseudo-checkbox {
+  /* Картинка с заливкой белым */
+  background-image: url(../images/group.svg);
+  /* Картинки не повторяются */
+  background-repeat: no-repeat;
+  /* Поместить картинку на всю площадь */
+  background-size: cover;
+  /* Отцентрировать картинку */
+  background-position: center;
+}
+
+/* Наведение мышкой на родителя кастомного чекбокса */
+
+.search-form__label:hover:has(.search-form__pseudo-checkbox) {
+  /* Подчеркнуть текст */
+  text-decoration: underline;
+}
+
+/* Активная кнопка (нажали кнопку мыши) */
+
+.button:active {
+  background: #545050;
+}
+
+/* Навели кнопку мыши на кнопку */
+
+.button:hover {
+  text-decoration: underline;
+}
+
+/* Кнопка при фокусе (не с клавиатуры) */
+
+.button:focus {
+  outline: none;
+}
+
+/* Кнопка при фокусе (с клавиатуры) */
+
+.button:focus-visible {
+  /* Обводка */
+  outline: 1px solid #fff;
+  /* Отступ для обводки */
+  outline-offset: 1px;
+}
+
+/* Двойная обводка при фокусе скрывается без внешнего отступа в 2px */
+.more-button:focus-visible {
+  /* Отступ */
+  margin: 2px;
+  /* Сокращаем размер до 99%, дабы не появлялся горизонтальный скролл */
+  max-width: 99%;
+}
+
+/* Для текущей и активной карточки (нажатие кнопки мыши) */
+
+.content__card-link_current,
+.content__card-link:active {
+  /* Фоновый цвет (по макету) */
+  background: #545050;
+}
+
+/* Навели на карточку */
+
+.content__card-link:hover {
+  /* Подчеркивание для заголовка и описания*/
+  text-decoration: underline;
+  /* Подчеркивание под строкой, включая под буквами с выпукластями :) */
+  text-underline-position: under;
+}
+
+/* Карточка в фокусе (не с клавиатуры) */
+
+.content__card-link:focus {
+  /* Отключаем обводку */
+  outline: none;
+}
+
+/* Карточка в фокусе (с клавиатуры) */
+
+.content__card-link:focus-visible {
+  /* Обводка */
+  outline: 1px solid #fff;
 }

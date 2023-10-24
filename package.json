@@ -1,0 +1,21 @@
+{
+  "name": "posmotri-v-okno",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Привет!\"",
+    "checkP" : "prettier --check './**/*.{html,css,js}'",
+    "formatP" : "prettier --write './**/*.{html,css,js}'",
+    "checkL" : "stylelint \"**/*.css\"",
+    "formatL" : "stylelint \"**/*.css\" --fix",
+    "checkAll": "npm run checkP && npm run checkL",
+    "formatAll": "npm run formatP && npm run formatL"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^3.0.3",
+    "stylelint": "^15.10.3"
+  }
+}
